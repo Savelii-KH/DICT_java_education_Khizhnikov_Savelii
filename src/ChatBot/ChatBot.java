@@ -29,5 +29,20 @@ public class ChatBot {
         for(int i = 0; i <= numb; i++){
             System.out.println(i + "!");
         }
+
+        System.out.println("Let's test your knowledge of traffic rules.");
+        System.out.println("The signs of which group introduce or cancel movement restrictions on the carriageway?");
+        System.out.println("1. Informational and indicative signs\n2. Prohibition signs\n3. Priority signs\n4. Warning signs");
+
+        while(true){
+            int answer = scanner.nextInt();
+            if(answer == 2){
+                System.out.println("Great, you right!");
+                break;
+            } else {
+                System.out.println("Please, try again.");
+            }
+        }
+        System.out.println("Goodbye, have a nice day!");
     }
 }
