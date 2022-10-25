@@ -21,31 +21,33 @@ public class hangman {
 			game(input);
 		}
 		if (attempts == 7){
-			System.out.println("You loose\n");
+			System.out.println("You lost\n");
 		}
-		System.out.println("Thanks for playing!\nWe'll see how well you did in the next stage");
 		sc.close();
 	}
 
-	public static void game(String letter){
+	public static void game(String letter) {
 		StringBuilder new_tire_word = new StringBuilder();
-		for (int i = 0; i < word.length(); i++){
-			if (word.charAt(i) == letter.charAt(0)){
+		for (int i = 0; i < word.length(); i++) {
+			if (word.charAt(i) == letter.charAt(0)) {
 				new_tire_word.append(letter.charAt(0));
-			} else if (tire_word.charAt(i) != 45){
+			} else if (tire_word.charAt(i) != 45) {
 				new_tire_word.append(word.charAt(i));
 			} else {
 				new_tire_word.append("-");
 			}
 		}
-		if (tire_word.equals(new_tire_word.toString())){
+		if (tire_word.contains(letter)) {
+			attempts++;
+			System.out.println("No improvements");
+		} else if (tire_word.equals(new_tire_word.toString())){
 			attempts++;
 			System.out.println("That letter doesn't appear in the word");
 		} else {
 			tire_word = new_tire_word.toString();
 		}
 		if (word.equals(tire_word)){
-			System.out.println("Correct! You win! The word was '" + word + "'\n");
+			System.out.println("You guessed the word! The word was '" + word + "'.\nYou survived!\n");
 		}
 	}
 }
