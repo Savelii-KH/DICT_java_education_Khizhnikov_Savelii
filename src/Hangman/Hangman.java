@@ -6,26 +6,30 @@ import java.util.Scanner;
 public class Hangman {
 
 	private static final String[] words = {"c++", "php", "lua", "java", "basic", "delphi", "pascal", "kotlin", "python", "javascript"};
-	private static final String word = words[new Random().nextInt(words.length)];
 	private static final String[] letters = {"\0"};
-	private static Integer attempts = 0;
+	private static final Scanner sc = new Scanner(System.in);
+	private static String word = words[new Random().nextInt(words.length)];
 	private static String tire_word = new String(new char[word.length()]).replace("\0", "-");
+	private static Integer attempts = 0;
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	public static void menu(){
+		System.out.print("HANGMAN\n\nType \"play\" to play the game, \"exit\" to quit: ");
+		String answer = sc.nextLine();
 
-		System.out.println("HANGMAN\n\n");
-		while (attempts <= 7 && tire_word.contains("-")){
-			System.out.println("\n" + tire_word + " " + word);
-			System.out.print("Input a letter: ");
+		if (answer.equalsIgnoreCase("exit")){
+			System.out.println("Goodbye, see your next time");
+			System.exit(0);
+		} else if (answer.equalsIgnoreCase("play")){
+			while (attempts <= 7 && tire_word.contains("-")){
+				System.out.println("\n" + tire_word);
+				System.out.print("Input a letter: ");
 
-			String input = sc.nextLine();
-			input_length(input);
+				String input = sc.nextLine();
+				input_length(input);
+			}
+		} else {
+			menu();
 		}
-		if (attempts == 7){
-			System.out.println("You lost\n");
-		}
-		sc.close();
 	}
 
 	private static void input_length(String input){
@@ -36,9 +40,8 @@ public class Hangman {
 	}
 
 	private static void registry_check(Integer code){
-		if (code >= 97 && code <= 122){
+		if (code >= 97 && code <= 122 || code == 43){
 			String input = Character.toString(code);
-			System.out.println(input);
 			duplicate_checking(input);
 		} else System.out.println("Please enter a lowercase English letter.\n");
 	}
@@ -65,6 +68,7 @@ public class Hangman {
 		}
 		win_check(new_tire_word, letter);
 	}
+
 	private static void win_check(StringBuilder new_tire_word, String letter){
 		if (tire_word.contains(letter)) {
 			attempts++;
@@ -77,6 +81,17 @@ public class Hangman {
 		}
 		if (word.equals(tire_word)){
 			System.out.println("\nYou guessed the word! The word was '" + word + "'.\nYou survived!\n");
+			word = words[new Random().nextInt(words.length)];
+			tire_word = new String(new char[word.length()]).replace("\0", "-");
+			attempts = 0;
+			menu();
+		}
+		if (attempts == 7){
+			System.out.println("You lost\n");
+			word = words[new Random().nextInt(words.length)];
+			tire_word = new String(new char[word.length()]).replace("\0", "-");
+			attempts = 0;
+			menu();
 		}
 	}
 }
