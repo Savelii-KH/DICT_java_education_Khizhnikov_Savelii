@@ -7,11 +7,10 @@ public class Main {
 		CoffeeMachine coffee_machine = new CoffeeMachine(1000, 1000, 1000, 100, 300);
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Write action (buy, fill, take, remaining, exit):");
-		String answer = sc.nextLine();
-		while (!answer.equals("exit")){
+		while (true){
+			String answer = sc.nextLine();
 			coffee_machine.menu(answer);
 			System.out.println("Write action (buy, fill, take, remaining, exit):");
-			answer = sc.nextLine();
 		}
 	}
 }
