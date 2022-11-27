@@ -81,11 +81,11 @@ public class CoffeeMachine {
 
 	private void cappuccino(){
 		if (component_count_check(200, 100, 12).equals("enough")) {
-			water -= 200;   	//pick water
-			milk -= 100;	    //pick milk
-			beans -= 12;	    //pick coffee beans
-			cup -= 1;        	//pick cup
-			money += 6;        	//add money
+			water -= 200;   		//pick water
+			milk -= 100;	    	//pick milk
+			beans -= 12;	    	//pick coffee beans
+			cup -= 1;        		//pick cup
+			money += 6;        		//add money
 		} else {
 			System.out.println(component_count_check(200, 100, 12));
 		}
@@ -93,10 +93,10 @@ public class CoffeeMachine {
 
 	private void espresso(){
 		if (component_count_check(250, 0, 16).equals("enough")) {
-			water -= 250;       //pick water
-			beans -= 16;       	//pick coffee beans
-			cup -= 1;         //pick cup
-			money += 4;         //add money
+			water -= 250;       	//pick water
+			beans -= 16;       		//pick coffee beans
+			cup -= 1;         		//pick cup
+			money += 4;         	//add money
 		} else {
 			System.out.println(component_count_check(250, 0, 16));
 		}
@@ -104,11 +104,11 @@ public class CoffeeMachine {
 
 	private void latte(){
 		if (component_count_check(350, 75, 20).equals("enough")) {
-			water -= 350;       //pick water
-			milk -= 75;        //pick milk
-			beans -= 20;        //pick coffee beans
-			cup -= 1;         //pick cup
-			money += 7;         //add money
+			water -= 350;       	//pick water
+			milk -= 75;       		//pick milk
+			beans -= 20;        	//pick coffee beans
+			cup -= 1;         		//pick cup
+			money += 7;         	//add money
 		} else {
 			System.out.println(component_count_check(350, 75, 20));
 		}
